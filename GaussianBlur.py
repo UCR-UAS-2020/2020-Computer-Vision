@@ -6,7 +6,7 @@
 import cv2, sys
 
 # get filename and kernel size from command line
-filename = "/Users/prestonreed/Downloads/puppy_img.jpg"
+filename = "puppy_img.jpg"
 k = int(15)
 
 # read and display original image
