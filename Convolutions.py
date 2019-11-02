@@ -1,6 +1,6 @@
 #import the necessary packages
 from skimage.exposure import rescale_intensity
-from numpy as np
+import numpy as np
 import argparse
 import cv2
 
