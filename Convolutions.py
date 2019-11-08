@@ -35,3 +35,5 @@ def convolve(image, kernel):
             # store the convolved value in the output (x,y)-
             # coordinate of the output image
             output[y - pad, x - pad] = k
+
+
