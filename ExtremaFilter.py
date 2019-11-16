@@ -10,6 +10,7 @@ two = cv.imread(r'.\noise3.jpg', cv.IMREAD_GRAYSCALE)
 
 # parameters: the 3 different DoGs
 def findExtrema(top, mid, bot):
+    #add borders around each image
     top = cv.copyMakeBorder(top, 1, 1, 1, 1, cv.BORDER_CONSTANT, value=0)
     mid = cv.copyMakeBorder(mid, 1, 1, 1, 1, cv.BORDER_CONSTANT, value=0)
     bot = cv.copyMakeBorder(bot, 1, 1, 1, 1, cv.BORDER_CONSTANT, value=0)
