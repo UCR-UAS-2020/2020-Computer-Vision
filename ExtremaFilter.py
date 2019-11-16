@@ -9,7 +9,11 @@ two = cv.imread(r'.\noise3.jpg', cv.IMREAD_GRAYSCALE)
 
 
 # parameters: the 3 different DoGs
-def FindExtrema(top, mid, bot):
+def findExtrema(top, mid, bot):
+    top = cv.copyMakeBorder(top, 1, 1, 1, 1, cv.BORDER_CONSTANT, value=0)
+    mid = cv.copyMakeBorder(mid, 1, 1, 1, 1, cv.BORDER_CONSTANT, value=0)
+    bot = cv.copyMakeBorder(bot, 1, 1, 1, 1, cv.BORDER_CONSTANT, value=0)
+
     # puts the 3 DoG's from the octave into a 3d matrix
     stack = np.stack((top, mid, bot))
 
