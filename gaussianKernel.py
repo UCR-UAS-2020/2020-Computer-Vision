@@ -23,7 +23,4 @@ def gaussKern(size, sigma):
 gKern = gaussKern(5, 2.5)
 
 # Print the kernel just to check the values.
-for r in gKern:
-    for c in r:
-        print(c)
-    print()
+print(np.matrix(gKern))
