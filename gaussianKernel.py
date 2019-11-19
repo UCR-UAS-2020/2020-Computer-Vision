@@ -19,8 +19,10 @@ def gaussKern(size, sigma):
 
     return output
 
+# Test case.
 gKern = gaussKern(5, 2.5)
 
+# Print the kernel just to check the values.
 for r in gKern:
     for c in r:
         print(c)
