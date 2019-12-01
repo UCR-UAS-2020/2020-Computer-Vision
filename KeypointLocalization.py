@@ -91,6 +91,13 @@ def find_keypoints_for_octave(D, extrema_threshold, eigenvalue_ratio, width):
     # return array
     return np.array(keypoints)
 
+'''
+    function get_keypoints
+    Inputs:
+        Dog_pyr:    a scale space pyramid as a 4D array
+        width:      width of a keypoint
+'''
+
 
 def get_keypoints(DoG_pyr, width):
     # Array of keypoints

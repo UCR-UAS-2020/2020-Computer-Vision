@@ -1,8 +1,15 @@
-#import the necessary packages
-from skimage.exposure import rescale_intensity
+'''
+    This script contains functions for simple image convolution.
+'''
+
+import math
 import numpy as np
-import argparse
 import cv2
+
+'''
+    Convolve a target image (M by N) with a convolution and return the result as an (M by N)
+'''
+
 
 def convolve(image, kernel):
     # grab the spatial dimensions of the image, along with
@@ -37,3 +44,23 @@ def convolve(image, kernel):
             output[y - pad, x - pad] = k
 
 
+'''
+    Create a gaussian kernel with size 8 standard deviations, +- 4*sigma, based on the ipol paper.
+'''
+
+
+def gauss_kernel(sigma):
+    # size is +-4 standard deviations, rounded up to the nearest odd number
+    size = (sigma * 8) // 2 * 2 + 1
+    arr = np.zeros((size, size))
+    # calculate s, a constant dependent on sigma:
+    s = 2*sigma**2
+    # calculate o, the center of the kernel. This will never be half because we start counting at 0.
+    o = size / 2
+    for i in range(0, size):
+        for j in range(0, size):
+            dist = (i-o)**2 + (j-o)**2  # calculate distance from center of kernel squared
+            # G(x,y,sigma) = e^(-(x^2 + y^2)/(2*sigma^2)) / (2*pi*sigma^2)
+            arr[i, j] = math.exp(-dist/s) / (math.pi*s)
+
+    return arr
