@@ -1,4 +1,7 @@
+import argparse as ap
 import cv2
+import numpy as np
+import functions as fn
 
 '''
     2020 AUVSI-SUAS UCR-UAS Computer Vision
@@ -34,8 +37,20 @@ import cv2
             centroids < findCentroids(binMask)
             boxBounds < createBoundingbox(binMask, center)
 
-
         array posCenters < findCenters(imHSV, colorChannel, HSV_dist_max)
-        targets_cropped, ref_colors < RGB   # Regions of pixels that fall within
-
+        targets_cropped, ref_colors < RGB   # Regions of pixels that fall within the bounding box
 '''
+
+fp = r'./Standard Target Images 1/imrs.jpg'
+im = cv2.imread(fp)  # TODO: Get argparse working
+colorTol = (50, 50, 50)
+tColors = fn.hsvHist(im)
+
+# TODO: imshow debug images
+for color in tColors:
+    mask = fn.createColorMask(im, color, colorTol)
+    centroids = fn.findCentroids(im, mask, color, colorTol)
+    for centroid in centroids:
+        bBox = fn.findBBox(im, mask, centroid, color, colorTol)
+        crop = fn.cropRegion(im, bBox)
+        # classify with mask
