@@ -7,7 +7,7 @@ run = True
 while (1):
 
     # Take each frame
-    image = cv2.imread("group_photo.jpg")
+    image = cv2.imread("IMG_0602.JPG")
 
     # Convert BGR to HSV
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
@@ -15,169 +15,22 @@ while (1):
     if run:
         frequencies = []
 
-        counter = 0
-        lower = np.array([0, 100, 100])
-        upper = np.array([15, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
+        for num in range(255):
+            counter = 0
+            lower = np.array([num, 100, 100])
+            upper = np.array([num, 255, 255])
+            mask = cv2.inRange(hsv, lower, upper)
+            for number in np.nditer(mask):
+                if (number > 0):
+                    counter += 1
+            frequencies.append(counter)
 
-        counter = 0
-        lower = np.array([15, 100, 100])
-        upper = np.array([31, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
 
-        counter = 0
-        lower = np.array([31, 100, 100])
-        upper = np.array([47, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
-
-        counter = 0
-        lower = np.array([47, 100, 100])
-        upper = np.array([63, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
-
-        counter = 0
-        lower = np.array([63, 100, 100])
-        upper = np.array([79, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
-
-        counter = 0
-        lower = np.array([79, 100, 100])
-        upper = np.array([95, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
-
-        counter = 0
-        lower = np.array([95, 100, 100])
-        upper = np.array([111, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
-
-        counter = 0
-        lower = np.array([111, 100, 100])
-        upper = np.array([127, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
-
-        counter = 0
-        lower = np.array([127, 100, 100])
-        upper = np.array([143, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
-
-        counter = 0
-        lower = np.array([143, 100, 100])
-        upper = np.array([159, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
-
-        counter = 0
-        lower = np.array([159, 100, 100])
-        upper = np.array([175, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
-
-        counter = 0
-        lower = np.array([175, 100, 100])
-        upper = np.array([191, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
-
-        counter = 0
-        lower = np.array([191, 100, 100])
-        upper = np.array([207, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
-
-        counter = 0
-        lower = np.array([207, 100, 100])
-        upper = np.array([223, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
-
-        counter = 0
-        lower = np.array([223, 100, 100])
-        upper = np.array([239, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-        counter = 0
-
-        counter = 0
-        lower = np.array([239, 100, 100])
-        upper = np.array([255, 255, 255])
-        mask = cv2.inRange(hsv, lower, upper)
-        for num in np.nditer(mask):
-            if (num > 0):
-                counter += 1
-        frequencies.append(counter)
-
-        x = np.arange(16)
+        x = np.arange(255)
 
         plt.plot(x, frequencies)
         plt.show()
+        print(frequencies)
 
         # Bitwise-AND mask and original image
         # Green result
