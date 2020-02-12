@@ -41,7 +41,7 @@ cv2.createTrackbar('highVal', 'colorTest', icol[5], 255, nothing)
 # Raspberry pi file path example.
 # frame = cv2.imread('/home/pi/python3/opencv/color-test/colour-circles-test.jpg')
 # Windows file path example.
-frame = cv2.imread(r'C:\Users\chris\Desktop\imrs.jpg')
+frame = cv2.imread('Standard Target Images 1/IMG_0602_Screenshot.png')
 
 while True:
     # Get HSV values from the GUI sliders.
