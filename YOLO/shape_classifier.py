@@ -140,19 +140,21 @@ if __name__ == '__main__':
     # model = train_model()
     loaded_model = load_model()
     while True:
-        filenum = random.randint(0, 1501)
+        filenum = random.randint(0, 1500)
         img = cv2.imread('../../ImageGenerator/Targets/' + str(filenum) + '.png', cv2.IMREAD_GRAYSCALE)
-        # img = cv2.imread('foamie_test_frames/quater_circle.png', cv2.IMREAD_GRAYSCALE)
+        # img = cv2.imread('foamie_test_frames/triangle.png', cv2.IMREAD_GRAYSCALE)
         img = prep_image(img)
         img = np.array(img)
         img = np.expand_dims(img, -1)
         arr = np.array([img])
         predictions = loaded_model.predict(arr)
         index = np.argmax(predictions[0])
-        print(predictions)
         if index > 0:
-            print(Shape(index))
+            print(Shape(index).name, 'confidence:', predictions[0, index], sep=' ')
 
         cv2.imshow('cropped_shape', img)
-        cv2.waitKey()
-        cv2.destroyAllWindows()
+        key = cv2.waitKey()
+        if key == 27:
+            break
+
+    cv2.destroyAllWindows()
