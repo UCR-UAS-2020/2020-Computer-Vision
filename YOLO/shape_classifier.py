@@ -18,6 +18,8 @@ from tensorflow.keras.callbacks import TensorBoard
 
 from proto import *
 
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 IMAGE_SIZE = 50
 img_path = r'..\..\ImageGenerator\Targets'
 target_path = r'..\..\ImageGenerator\Target Data'
@@ -137,6 +139,29 @@ if __name__ == '__main__':
     #     cv2.waitKey()
 
     # store_training_data()
+<<<<<<< HEAD
+    model = train_model()
+    # loaded_model = load_model()
+    # while True:
+    #     filenum = random.randint(0, 1500)
+    #     img = cv2.imread('../../ImageGenerator/Targets/' + str(filenum) + '.png', cv2.IMREAD_GRAYSCALE)
+    #     # img = cv2.imread('foamie_test_frames/triangle.png', cv2.IMREAD_GRAYSCALE)
+    #     img = prep_image(img)
+    #     img = np.array(img)
+    #     img = np.expand_dims(img, -1)
+    #     arr = np.array([img])
+    #     predictions = loaded_model.predict(arr)
+    #     index = np.argmax(predictions[0])
+    #     if index > 0:
+    #         print(Shape(index).name, 'confidence:', predictions[0, index], sep=' ')
+    #
+    #     cv2.imshow('cropped_shape', img)
+    #     key = cv2.waitKey(33)
+    #     if key == 27:
+    #         break
+    #
+    # cv2.destroyAllWindows()
+=======
     # model = train_model()
     loaded_model = load_model()
     while True:
@@ -158,3 +183,4 @@ if __name__ == '__main__':
             break
 
     cv2.destroyAllWindows()
+>>>>>>> parent of 0865297... add shape_classifier.py
