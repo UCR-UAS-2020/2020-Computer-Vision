@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+import cv2
+
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
@@ -8,8 +10,6 @@ from keras.utils import to_categorical
 
 import json
 import numpy as np
-import os
-import cv2
 import pickle
 from tqdm import tqdm
 import random
@@ -152,7 +152,7 @@ if __name__ == '__main__':
         if index > 0:
             print(Shape(index).name, 'confidence:', predictions[0, index], sep=' ')
 
-        cv2.imshow('cropped_shape', img)
+        # cv2.imshow('cropped_shape', img)
         key = cv2.waitKey()
         if key == 27:
             break
